@@ -1,0 +1,17 @@
+date;city;channel;orders_count;unique_customers;items_sold
+2025-03-08;Bordeaux;app;5;5;38
+2025-03-08;Bordeaux;web;8;8;60
+2025-03-08;Lille;app;1;1;8
+2025-03-08;Lille;web;6;6;60
+2025-03-08;Lyon;app;4;3;22
+2025-03-08;Lyon;web;4;4;28
+2025-03-08;Marseille;app;4;4;29
+2025-03-08;Marseille;web;6;6;36
+2025-03-08;Nantes;app;4;4;33
+2025-03-08;Nantes;web;6;5;34
+2025-03-08;Nice;app;4;4;27
+2025-03-08;Nice;web;6;6;34
+2025-03-08;Paris;app;4;4;31
+2025-03-08;Paris;web;7;7;43
+2025-03-08;Toulouse;app;6;6;27
+2025-03-08;Toulouse;web;3;3;20
