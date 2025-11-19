@@ -1,10 +1,19 @@
 #step 2: une fois les données chargées depuis les csv et json, on créer les tables de la bdd
 import sqlite3
 
-conn= sqlite3.connect("data.db")
+conn= sqlite3.connect("sales.db")
 cursor = conn.cursor()
 
 cursor.executescript("""
+CREATE TABLE IF NOT EXISTS refunds (
+    refund_id TEXT PRIMARY KEY,
+    order_id TEXT NOT NULL,
+    amount REAL NOT NULL,
+    reason TEXT,
+    created_at DATETIME,
+    FOREIGN KEY (order_id) REFERENCES orders_clean(order_id)
+);
+
 CREATE TABLE IF NOT EXISTS daily_city_sales (
     date TEXT NOT NULL,                     
     city TEXT,

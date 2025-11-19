@@ -1,4 +1,13 @@
+# Fichiers de données brutes
 /data-68ed/data
+/data-68ed/__MACOSX
+
+# Environnement virtuel
 venv/
+
+# Fichiers Python compilés
 __pycache__/
-data-68ed/__MACOSX
+
+# Fichiers générés
+sales.db
+daily_summary/

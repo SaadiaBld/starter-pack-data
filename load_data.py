@@ -7,7 +7,7 @@ import os
 import json
 
 # Constantes pour les chemins
-DB_FILE = "data.db"
+DB_FILE = "sales.db"
 DATA_PATH = os.path.join('data-68ed', 'data', 'input')
 
 def clean_and_load_orders():
@@ -115,11 +115,40 @@ def clean_and_load_orders():
     except Exception as e:
         print(f"Une erreur est survenue lors du chargement BDD : {e}")
 
+def load_refunds():
+    """
+    Charge les données de remboursement depuis refunds.csv dans la base de données.
+    """
+    print("\nDébut du chargement des remboursements...")
+    refunds_path = os.path.join(DATA_PATH, 'refunds.csv')
+    
+    if not os.path.exists(refunds_path):
+        print(f"Erreur : Le fichier de remboursements {refunds_path} est introuvable.")
+        return
+
+    refunds_df = pd.read_csv(refunds_path)
+    print(f"{len(refunds_df)} lignes de remboursement chargées depuis le CSV.")
+
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        # Charger les données de remboursement dans une nouvelle table
+        refunds_df.to_sql('refunds', conn, if_exists='replace', index=False)
+        conn.close()
+        print(f"{len(refunds_df)} lignes insérées dans la table 'refunds'.")
+        print("Chargement des remboursements terminé avec succès.")
+
+    except Exception as e:
+        print(f"Une erreur est survenue lors du chargement des remboursements : {e}")
+
 if __name__ == "__main__":
     try:
+        # Exécuter tables.py pour s'assurer que le schéma est à jour
         exec(open("tables.py").read())
+        print("Schéma de la base de données vérifié/créé.")
     except Exception as e:
         print(f"Erreur lors de l'exécution de tables.py : {e}")
         exit()
     
+    # Charger les deux ensembles de données
     clean_and_load_orders()
+    load_refunds()
