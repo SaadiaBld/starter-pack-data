@@ -46,3 +46,16 @@ Le but de ce pipeline est de produire chaque jour un résumé financier de l'act
     - Séparateur : Point-virgule (`;`)
     - Encodage : UTF-8
     - Colonnes : `date;city;channel;orders_count;unique_customers;items_sold;gross_revenue_eur;refunds_eur;net_revenue_eur`
+
+
+# Migration Spark
+docker build -t jupyter-app .
+
+docker run -d --rm   -p 8888:8888   -v "$(pwd):/workspace"   -v "$(pwd)/data-68ed/data:/app/data"   --name spark-jupyter-app   jupyter-app
+
+docker logs spark-jupyter-app (pour avoir url et accéder au notebook sur localhost)
+
+docker exec -it spark-jupyter-app bash (on rentre dans le shell du conteneur): puis on lance pytest
+
+ou bien docker exec -it spark-jupyter-app pytest -vv (vv = verbose pour lire les logs, les prints des tests...)
+

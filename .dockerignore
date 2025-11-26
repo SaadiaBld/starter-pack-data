@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+venv/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS / Trash
+.Trash-0
+
+# Données (car montées avec un volume)
+data-68ed/
+daily_summary/
+data/
+
+# Base SQLite & dumps
+*.db
+*.sql

@@ -11,3 +11,8 @@ __pycache__/
 # Fichiers générés
 sales.db
 daily_summary/
+mini_data/
+warehouse/
+.ipynb_checkpoints
+.pytest_cache
+.Trash-0
